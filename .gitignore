@@ -12,6 +12,8 @@ contract_out.txt
 # 凭据 —— 任何情况下都不入库
 *.env
 .env.*
+!.env.example
+!*.env.example
 admin_password.txt
 *credentials*
 auth/

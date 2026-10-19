@@ -9,18 +9,47 @@ AI Studio 有两条独立的额度通道，同一个 Google 账号在两边的�
 
 一个通道打满时，**同一个账号**可以立刻切换到另一个通道继续服务——这是双通道反代的核心价值。
 
+## 快速开始
+
+**服务器一键安装**（Linux，systemd）：
+
+```bash
+# 先下载二进制放到 deploy/ 目录
+#   https://github.com/Mag1cFall/AIStudio2API/releases
+scp -r deploy/ aistudio2api-linux-amd64 root@server:/root/relay/
+ssh root@server 'cd /root/relay/deploy && cp ../aistudio2api-linux-amd64 aistudio2api && sudo bash install.sh'
+```
+
+装完 `ready=0` 属正常——还没有账号。加账号（在有图形界面的机器上）：
+
+```bash
+ssh -N -L 2048:127.0.0.1:2048 root@server     # 终端 1，保持
+bash deploy/login-account.sh --server http://127.0.0.1:2048   # 终端 2
+```
+
+完整部署文档：[`docs/deployment.md`](docs/deployment.md)（三种形态、Nginx 配置、排障）
+
 ## 这里有什么
 
 ```
+deploy/
+  install.sh            服务器一键安装（建用户/装二进制/写 .env/systemd/自检）
+  login-account.sh      本机隔离登录并推送到服务器
+  check_account.py      诊断账号能不能用、能不能续签
+  .env.example          配置模板（每个变量的取值理由都写在注释里）
+watchdog/
+  watchdog.py           健康检查（服务/账号/推理/续签能力/死代理）
+  install-watchdog.sh   装成 systemd timer
 docs/
-  build-playground-relay.md     双通道反代综述（概念、协议差异、部署形态）
+  deployment.md         部署与排障
+  build-playground-relay.md     双通道反代综述
   playground-protocol.md        Playground GenerateContent 协议分析
 build-pool/
-  README.md                     多账号顺延的四种路线与取舍
-  scheduler.py                  调度器实现（状态机，可直接跑）
-  api_contract.json             接口契约快照
-  _contract_probe.py            契约探测脚本
-  probe_quota.js                额度探测
+  README.md             多账号顺延的四种路线与取舍
+  scheduler.py          调度器实现（python scheduler.py 可直接跑）
+  api_contract.json     接口契约快照
+  _contract_probe.py    契约探测脚本
+  probe_quota.js        额度探测
 ```
 
 ## 核心结论（先说答案）

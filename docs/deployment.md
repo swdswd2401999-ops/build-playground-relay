@@ -156,11 +156,11 @@ python3 deploy/check_account.py --all /opt/aistudio2api/auth
 输出里 `origins` 那一行是命门：
 
 ```
-✅ a01077522795@gmail.com
+✅ acc-001@gmail.com
    · origins          2 个
    · 最后刷新         0.0h 前
 
-❌ rondaelmasv45@gmail.com
+❌ acc-002@gmail.com
    · cookies          40 个
    ✗ origins          0 个 ← 没有 aistudio.google.com，续签代码永远启动不了
 ```

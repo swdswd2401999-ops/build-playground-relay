@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 本次运行产物（含本地路径、真实账号标识）
+contract_out.txt
+*.log
+
+# 凭据 —— 任何情况下都不入库
+*.env
+.env.*
+admin_password.txt
+*credentials*
+auth/
+*.pem
+*.key
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

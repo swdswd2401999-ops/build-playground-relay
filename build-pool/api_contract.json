@@ -1,0 +1,242 @@
+{
+  "/api/auth/me": {
+    "status": 200,
+    "shape": {
+      "id": 1,
+      "email": "admin@juxing.local",
+      "identifier": "admin@juxing.local",
+      "tier": "ultra",
+      "is_admin": true,
+      "disabled": false,
+      "created_at": 1791544362
+    }
+  },
+  "/api/usage/summary": {
+    "status": 200,
+    "shape": {
+      "tier": "ultra",
+      "limits": {
+        "tier": "ultra",
+        "daily_requests": 1500,
+        "weekly_requests": 9000,
+        "rpm": 60,
+        "max_concurrency": 12
+      },
+      "today": {
+        "requests": 0,
+        "prompt_tokens": 0,
+        "completion_tokens": 0,
+        "limit": 1500,
+        "reset_at": 1792368000
+      },
+      "this_week": {
+        "requests": 0,
+        "limit": 9000,
+        "reset_at": 1792368000
+      },
+      "history": [
+        {
+          "day": "…",
+          "requests": "…",
+          "prompt_tokens": "…",
+          "completion_tokens": "…"
+        }
+      ]
+    }
+  },
+  "/api/usage/requests": {
+    "status": 200,
+    "shape": {
+      "requests": [
+        {
+          "id": "…",
+          "ts": "…",
+          "model": "…",
+          "path": "…",
+          "upstream_status": "…",
+          "gateway_status": "…",
+          "prompt_tokens": "…",
+          "completion_tokens": "…",
+          "latency_ms": "…",
+          "queued_ms": "…",
+          "ttft_ms": "…",
+          "upstream": "…"
+        }
+      ],
+      "total": 36,
+      "limit": 3,
+      "offset": 0
+    }
+  },
+  "/api/keys": {
+    "status": 200,
+    "shape": {
+      "keys": [
+        {
+          "id": "…",
+          "name": "…",
+          "prefix": "…",
+          "rpm_limit": "…",
+          "max_concurrency": "…",
+          "revoked": "…",
+          "created_at": "…",
+          "last_used_at": "…"
+        }
+      ]
+    }
+  },
+  "/api/me/credentials": {
+    "status": 502,
+    "shape": "{\"detail\":\"上游返回 502\"}"
+  },
+  "/api/admin/overview": {
+    "status": 200,
+    "shape": {
+      "users": {
+        "total": 95,
+        "by_tier": {
+          "free": "…",
+          "pro": "…",
+          "ultra": "…"
+        },
+        "disabled": 0
+      },
+      "keys": {
+        "total": 53,
+        "active": 28
+      },
+      "usage": {
+        "requests_today": 0,
+        "requests_week": 0,
+        "prompt_tokens_today": 0,
+        "completion_tokens_today": 0,
+        "errors_today": 0
+      },
+      "codes": {
+        "total": 46,
+        "unused": 23
+      },
+      "invites": {
+        "required": true,
+        "total": 14,
+        "active": 12,
+        "used": 3
+      },
+      "upstream": {
+        "base": "http://127.0.0.1:7861",
+        "password_configured": true,
+        "timeout_seconds": 300.0,
+        "allow_query_key": false,
+        "health": {
+          "reachable": "…",
+          "status": "…"
+        },
+        "configured": {
+          "total": "…",
+          "enabled": "…",
+          "names": "…"
+        }
+      },
+      "recent_requests": [
+        {
+          "email": "…",
+          "model": "…",
+          "gateway_status": "…",
+          "latency_ms": "…",
+          "queued_ms": "…",
+          "ts": "…"
+        }
+      ]
+    }
+  },
+  "/api/admin/users": {
+    "status": 200,
+    "shape": {
+      "users": [
+        {
+          "id": "…",
+          "email": "…",
+          "tier": "…",
+          "tier_expires_at": "…",
+          "disabled": "…",
+          "is_admin": "…",
+          "created_at": "…"
+        }
+      ],
+      "total": 95
+    }
+  },
+  "/api/admin/tiers": {
+    "status": 200,
+    "shape": {
+      "tiers": [
+        {
+          "name": "…",
+          "daily_requests": "…",
+          "weekly_requests": "…",
+          "rpm": "…",
+          "max_concurrency": "…",
+          "description": "…"
+        }
+      ]
+    }
+  },
+  "/api/admin/codes": {
+    "status": 200,
+    "shape": {
+      "codes": [
+        {
+          "code": "…",
+          "tier": "…",
+          "days": "…",
+          "batch": "…",
+          "note": "…",
+          "created_at": "…",
+          "redeemed_by": "…",
+          "redeemed_at": "…",
+          "redeemed_email": "…"
+        }
+      ]
+    }
+  },
+  "/api/admin/error-messages": {
+    "status": 200,
+    "shape": {
+      "messages": [
+        {
+          "id": "…",
+          "error_type": "…",
+          "keyword": "…",
+          "custom_message": "…",
+          "priority": "…",
+          "is_active": "…",
+          "hit_count": "…",
+          "last_hit_at": "…",
+          "created_at": "…",
+          "updated_at": "…"
+        }
+      ],
+      "total": 3,
+      "active": 3,
+      "enabled": true,
+      "error_types": [
+        "RATE_LIMIT"
+      ]
+    }
+  },
+  "/api/admin/events": {
+    "status": 200,
+    "shape": {
+      "events": [
+        {
+          "id": "…",
+          "ts": "…",
+          "user_id": "…",
+          "kind": "…",
+          "detail": "…",
+          "user_email": "…"
+        }
+      ]
+    }
+  }
+}
